@@ -1,0 +1,21 @@
+class Solution {
+    public int[][] matrixReshape(int[][] matrix, int r, int c) {
+        
+        int orgRows = matrix.length;
+        int orgCols = matrix[0].length;
+        
+        // Check if reshape is possible
+        if (orgRows * orgCols != r * c) {
+            return matrix;
+        }
+        
+        int[][] reshapedMatrix = new int[r][c];
+        
+        for (int index = 0; index < orgRows * orgCols; index++) {
+            reshapedMatrix[index / c][index % c] =
+                    matrix[index / orgCols][index % orgCols];
+        }
+        
+        return reshapedMatrix;
+    }
+}

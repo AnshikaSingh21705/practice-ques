@@ -1,0 +1,46 @@
+import java.util.*;
+
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+
+        List<Integer> spiralElements = new ArrayList<>();
+
+        int topRow = 0;
+        int bottomRow = matrix.length - 1;
+        int leftColumn = 0;
+        int rightColumn = matrix[0].length - 1;
+
+        while (topRow <= bottomRow && leftColumn <= rightColumn) {
+
+            // Left to Right
+            for (int column = leftColumn; column <= rightColumn; column++) {
+                spiralElements.add(matrix[topRow][column]);
+            }
+            topRow++;
+
+            // Top to Bottom
+            for (int row = topRow; row <= bottomRow; row++) {
+                spiralElements.add(matrix[row][rightColumn]);
+            }
+            rightColumn--;
+
+            // Right to Left
+            if (topRow <= bottomRow) {
+                for (int column = rightColumn; column >= leftColumn; column--) {
+                    spiralElements.add(matrix[bottomRow][column]);
+                }
+                bottomRow--;
+            }
+
+            // Bottom to Top
+            if (leftColumn <= rightColumn) {
+                for (int row = bottomRow; row >= topRow; row--) {
+                    spiralElements.add(matrix[row][leftColumn]);
+                }
+                leftColumn++;
+            }
+        }
+
+        return spiralElements;
+    }
+}

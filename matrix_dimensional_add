@@ -1,0 +1,20 @@
+class Solution {
+    public int diagonalSum(int[][] matrix) {
+
+        int size = matrix.length;
+        int diagonalSum = 0;
+
+        for (int row = 0; row < size; row++) {
+
+            // Primary diagonal
+            diagonalSum += matrix[row][row];
+
+            // Secondary diagonal
+            if (row != size - 1 - row) {
+                diagonalSum += matrix[row][size - 1 - row];
+            }
+        }
+
+        return diagonalSum;
+    }
+}
